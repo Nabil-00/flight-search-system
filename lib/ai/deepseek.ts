@@ -34,7 +34,7 @@ Rules:
  * Extracts structured flight search entities from natural language customer requests.
  */
 export async function extractFlightData(message: string): Promise<AIExtractionResult> {
-  const apiKey = process.env.OPENROUTER_API_KEY;
+  const apiKey = process.env.OPENROUTER_API_KEY || process.env.DEEPSEEK_API_KEY;
 
   if (apiKey && apiKey.trim() && !apiKey.includes("your_openrouter_api_key_here")) {
     try {
@@ -48,6 +48,7 @@ export async function extractFlightData(message: string): Promise<AIExtractionRe
         },
         body: JSON.stringify({
           model: "deepseek/deepseek-chat",
+          models: ["deepseek/deepseek-chat", "deepseek/deepseek-r1", "nvidia/nemotron-3.5-lightning:free"],
           messages: [
             { role: "system", content: SYSTEM_EXTRACTION_PROMPT },
             { role: "user", content: message },
