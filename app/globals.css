@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-storm: #0F282F;
+    --brand-cyan: #02EFF0;
+    --brand-white: #FFFFFF;
+  }
+
+  body {
+    color: #0F282F;
+    background-color: #F8FAFB;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom scrollbar for conversational flow */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B8CCD1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8FAFB7;
+}
+
+/* Pulse glow animation for AI loading */
+@keyframes cyanPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(2, 239, 240, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(2, 239, 240, 0.8);
+  }
+}
+
+.cyan-pulse {
+  animation: cyanPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
